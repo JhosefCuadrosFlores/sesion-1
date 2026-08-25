@@ -1,0 +1,26 @@
+# PagaTú - Sesión 1 | Construcción del Servicio Base
+# Estudiante: Cuadros Flores Jhosef Giampiere
+# Código Universitario: 202410808 | Grupo 1
+# Entorno: VS Code + Docker Desktop + PostgreSQL
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: pagatu-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: db_pagatu_base
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pagatu_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d db_pagatu_base"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pagatu_pg_data:

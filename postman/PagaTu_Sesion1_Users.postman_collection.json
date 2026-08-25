@@ -1,0 +1,84 @@
+{
+  "info": {
+    "name": "PagaTú Sesión 1 - Usuario/Cuenta",
+    "description": "Estudiante: Cuadros Flores Jhosef Giampiere | Código: 202410808 | Grupo 1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Listar usuarios",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/json" }],
+        "url": { "raw": "http://localhost:8080/api/v1/users", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "users"] }
+      }
+    },
+    {
+      "name": "Obtener usuario por ID",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/json" }],
+        "url": { "raw": "http://localhost:8080/api/v1/users/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "users", "1"] }
+      }
+    },
+    {
+      "name": "Buscar por email",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/json" }],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/users/search?email=jhosef.cuadros@pagatu.edu.pe",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "users", "search"],
+          "query": [{ "key": "email", "value": "jhosef.cuadros@pagatu.edu.pe" }]
+        }
+      }
+    },
+    {
+      "name": "Crear usuario",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"María Elena Quispe Rojas\",\n  \"email\": \"maria.quispe@pagatu.edu.pe\",\n  \"password\": \"ClaveSegura123\",\n  \"phone\": \"966777888\",\n  \"accountNumber\": \"001-0000004\",\n  \"accountType\": \"AHORROS\",\n  \"balance\": 250.00,\n  \"status\": \"ACTIVO\",\n  \"roleId\": 1\n}"
+        },
+        "url": { "raw": "http://localhost:8080/api/v1/users", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "users"] }
+      }
+    },
+    {
+      "name": "Actualizar usuario",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"María Elena Quispe Rojas\",\n  \"email\": \"maria.quispe@pagatu.edu.pe\",\n  \"password\": \"ClaveSegura123\",\n  \"phone\": \"966777999\",\n  \"accountNumber\": \"001-0000004\",\n  \"accountType\": \"CORRIENTE\",\n  \"balance\": 1250.00,\n  \"status\": \"ACTIVO\",\n  \"roleId\": 1\n}"
+        },
+        "url": { "raw": "http://localhost:8080/api/v1/users/4", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "users", "4"] }
+      }
+    },
+    {
+      "name": "Eliminar usuario",
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "http://localhost:8080/api/v1/users/4", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "users", "4"] }
+      }
+    },
+    {
+      "name": "Actuator Health",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8080/actuator/health", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["actuator", "health"] }
+      }
+    }
+  ]
+}
