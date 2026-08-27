@@ -1,0 +1,11 @@
+# PagaTú S02 | Cliente Config - orden-ms
+# spring.application.name DEBE coincidir con los archivos orden-ms-{profile}.yml
+# No existen application-dev.yml ni application-prod.yml en este módulo.
+
+spring:
+  application:
+    name: orden-ms
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  config:
+    import: "optional:configserver:${CONFIG_SERVER_URL:http://localhost:18888}"

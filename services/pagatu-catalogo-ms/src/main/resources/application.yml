@@ -1,0 +1,10 @@
+# PagaTú S02 | Cliente Config - pagatu-catalogo-ms
+# No hay application-dev.yml ni application-prod.yml: viven en config-repo.
+
+spring:
+  application:
+    name: pagatu-catalogo-ms
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  config:
+    import: "optional:configserver:${CONFIG_SERVER_URL:http://localhost:18888}"

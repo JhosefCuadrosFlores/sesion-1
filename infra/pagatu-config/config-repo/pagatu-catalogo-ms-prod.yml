@@ -1,0 +1,49 @@
+# PagaTú S02 | pagatu-catalogo-ms | perfil PROD
+# Estudiante: Cuadros Flores Jhosef Giampiere | Equipo 1
+
+server:
+  port: 9080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://db-pagatu-prod:5432/db_pagatu_catalogo
+    username: pagatu_prod
+    password: P4g4Tu#Prod2026
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+logging:
+  level:
+    root: WARN
+    pe.edu.upeu.catalogo: INFO
+    org.springframework.cloud.config: WARN
+    org.hibernate.SQL: WARN
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
+
+info:
+  app:
+    name: pagatu-catalogo-ms
+    ambiente: prod
+    equipo: 1

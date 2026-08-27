@@ -1,0 +1,36 @@
+# PagaTú S02 | Config Server
+# Estudiante: Cuadros Flores Jhosef Giampiere | Equipo 1
+
+server:
+  port: 18888
+
+spring:
+  application:
+    name: pagatu-config
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: ${CONFIG_REPO_LOCATION:file:./config-repo}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: pagatu-config
+    descripcion: Servidor de configuración centralizada (perfil native)
+    sesion: S02
+    estudiante: Cuadros Flores Jhosef Giampiere
+    equipo: "1"

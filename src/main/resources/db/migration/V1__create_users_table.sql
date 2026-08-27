@@ -1,4 +1,4 @@
--- PagaTú - Sesión 1 | DDL Usuario/Cuenta
+ñ   -- PagaTú - Sesión 1 | DDL Usuario/Cuenta
 -- Estudiante: Cuadros Flores Jhosef Giampiere | 202410808 | Grupo 1
 
 CREATE TABLE roles (

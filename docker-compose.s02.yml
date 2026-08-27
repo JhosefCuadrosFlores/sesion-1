@@ -1,0 +1,43 @@
+# PagaTú S02 | PostgreSQL para catálogo y órdenes
+# Cuadros Flores Jhosef Giampiere | Equipo 1
+
+services:
+  postgres-catalogo:
+    image: postgres:16-alpine
+    container_name: pagatu-postgres-catalogo
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: db_pagatu_catalogo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "15432:5432"
+    volumes:
+      - pagatu_catalogo_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d db_pagatu_catalogo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgres-orden:
+    image: postgres:16-alpine
+    container_name: pagatu-postgres-orden
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: db_pagatu_orden
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "15434:5432"
+    volumes:
+      - pagatu_orden_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d db_pagatu_orden"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pagatu_catalogo_data:
+  pagatu_orden_data:
